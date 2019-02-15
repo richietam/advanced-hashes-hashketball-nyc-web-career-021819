@@ -123,17 +123,17 @@ end
 #from there, I want to return key = name, value = :points
 
 def num_points_scored(player_name)
-  points = nil
-   game_hash.each do |location, team_data|
-     team_data[:players].each do |name, stats|
-       binding.pry
-       if name == player_name
-        points = team_data[:players][player_name][:points]
-       end
+  points = 0
+  game_hash.each do |location, team_data|
+    team_data[:players].each do |name, stats|
+      if name == player_name
+        points += stats[:points]
       end
     end
-    points
   end
+   points
+end
+
 
 def shoe_size(player_name)
   game_hash.each do |location, team_data|
